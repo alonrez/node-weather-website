@@ -25,9 +25,9 @@ const forecast = (latitude, longitude, callback) => {
             const precip = body.current.precip
             const feelsLike = body.current.feelslike
             if (currentWeather == feelsLike) {
-                callback(undefined, describeWeather+ '. It is currently '+currentWeather+' degress out. and Humidity stands on '+humidity+' and there is '+precip+' chance of rain')
+                callback(undefined, describeWeather+ '. It is currently '+currentWeather+' degress out.  Humidity stands on '+humidity+' and there is '+precip+' chance of rain')
             } else {
-                callback(undefined, describeWeather+ '. It is currently '+currentWeather+' degrees but it feels like '+feelsLike+' degress out. and Humidity stands on '+humidity+' and there is '+precip+' chance of rain')
+                callback(undefined, describeWeather+ '. It is currently '+currentWeather+' degrees but it feels like '+feelsLike+' degress out.  Humidity stands on '+humidity+' and there is '+precip+' chance of rain')
             }
         }
     })
