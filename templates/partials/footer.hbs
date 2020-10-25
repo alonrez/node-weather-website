@@ -1,21 +1,3 @@
 <footer>
-    <button id="button" class="btn">Dark Mode</button>
     <p>Created By {{name}}</p>
 </footer>
-
-
-<script>
-let counter = 1;
-document.getElementById('button').addEventListener("click", function() {
-  counter++;
-       if (counter % 2 == 0) {
-        document.body.style.backgroundColor = '#00bfff';
-        document.getElementById('main-content').style.color = '#3d3a3a';
-        btnTxt = 'Dark-Mode';
-       } else {
-        document.body.style.backgroundColor = '#1f1f1f';
-        document.getElementById('main-content').style.color = '#7fffd4';
-        btnTxt = 'Light-Mode';
-       }
-})
-</script>
