@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 
+/*
+background color : #1f1f1f
+main content color: aquamarine
+header a color : #ffffff
+
+*/
+
 <html>
 
 <head>
+    <!-- region-->
+<h4>Dark Mode</h4>
+<label class="switch" onclick="myFunction()">
+    <input type="checkbox">
+    <span class="slider"></span>
+</label>
+<!--end region-->
+
     <title>Weather</title>
     <link rel="icon" href="/img/weather.png">
 <link rel="stylesheet" href="css/styles.css"> 
 <style>
-  body {
-  background-image:url('/web-server/public/img/cloud.png');
-  }
-  </style>
+
 </style>
 </head>
 
 <body>
     
 
-    <div class="main-content">
+    <div id="main-content" class="main-content">
          {{>header}}
 
          <p> Use this site to get your weather!</p>
@@ -33,7 +45,21 @@
     </div>
 
     {{>footer}}
-
+    <!-- region-->
+<script>
+    let counter = 0;
+    function myFunction() {
+       counter++;
+       if (counter % 2 == 0) {
+        document.body.style.backgroundColor = '#00bfff';
+        document.getElementById('main-content').style.color = '#3d3a3a';
+       } else {
+        document.body.style.backgroundColor = '#1f1f1f';
+        document.getElementById('main-content').style.color = '#7fffd4';
+       }
+    }
+</script>
+<!--end region-->
     <script src="js/app.js"></script>
 </body>
 
