@@ -8,9 +8,8 @@
 
 <script>
 let counter = 1;
-let btnTxt = document.getElementById('button').innerText;
-    function DarkMode() {
-       counter++;
+document.getElementById('button').addEventListener("click", function() {
+  counter++;
        if (counter % 2 == 0) {
         document.body.style.backgroundColor = '#00bfff';
         document.getElementById('main-content').style.color = '#3d3a3a';
@@ -20,6 +19,5 @@ let btnTxt = document.getElementById('button').innerText;
         document.getElementById('main-content').style.color = '#7fffd4';
         btnTxt = 'Light-Mode';
        }
-    }
-document.getElementById('button').onclick="DarkMode()"
+})
 </script>
