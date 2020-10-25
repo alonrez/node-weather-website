@@ -43,8 +43,16 @@ app.get('/help', (req, res) => {
     })
 })
 
+
 app.get('/weather', (req, res) => {
-    if (!req.query.address) {
+    let input = req.query.address;
+    
+    if (input.includes('>')||input.includes('\"')|| input.includes('<')||input.includes('/')||input.includes('(')||input.includes('!')||input.includes('\'')) {
+        return res.send({
+            error: 'Hey! no funny business.. enter a valid address!'
+        })
+    }
+   else if (!req.query.address) {
         return res.send({
             error: 'You must provide an address!'
         })
