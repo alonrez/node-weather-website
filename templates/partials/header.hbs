@@ -7,4 +7,22 @@
 </header>
 
 
-<script src="/web-server/public/js/Dark_algo.js" ></script>
+<script>
+let counter = 0;
+document.getElementById('button').addEventListener("click", function(x) {
+  counter++;
+       if (counter % 2 == 0) {
+        document.body.style.backgroundColor = '#00bfff';
+        document.getElementById('main-content').style.color = '#3d3a3a';
+        document.getElementById('button').innerText = 'Dark-Mode';
+        counter ++;
+       console.log(counter)
+       } else {
+        document.body.style.backgroundColor = '#1f1f1f';
+        document.getElementById('main-content').style.color = '#7fffd4';
+        document.getElementById('button').innerText = 'Light-Mode';
+        counter++;
+        console.log(counter)
+       }
+})
+</script>
