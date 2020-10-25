@@ -46,7 +46,7 @@ app.get('/help', (req, res) => {
 
 app.get('/weather', (req, res) => {
     let input = req.query.address;
-    
+    // manual ssi sql and xss injections and attacks prevention.
     if (input.includes('>')||input.includes('\"')|| input.includes('<')||input.includes('/')||input.includes('(')||input.includes('!')||input.includes('\'')) {
         return res.send({
             error: 'Hey! no funny business.. enter a valid address!'
