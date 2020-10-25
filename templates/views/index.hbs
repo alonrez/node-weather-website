@@ -1,22 +1,11 @@
 <!DOCTYPE html>
 
-/*
-background color : #1f1f1f
-main content color: aquamarine
-header a color : #ffffff
 
-*/
 
 <html>
 
 <head>
-    <!-- region-->
-<h4>Dark Mode</h4>
-<label class="switch" onclick="myFunction()">
-    <input type="checkbox">
-    <span class="slider"></span>
-</label>
-<!--end region-->
+
 
     <title>Weather</title>
     <link rel="icon" href="/img/weather.png">
@@ -46,9 +35,9 @@ header a color : #ffffff
 
     {{>footer}}
     <!-- region-->
-<script>
+{{!-- <script>
     let counter = 0;
-    function myFunction() {
+    function DarkMode() {
        counter++;
        if (counter % 2 == 0) {
         document.body.style.backgroundColor = '#00bfff';
@@ -58,7 +47,7 @@ header a color : #ffffff
         document.getElementById('main-content').style.color = '#7fffd4';
        }
     }
-</script>
+</script> --}}
 <!--end region-->
     <script src="js/app.js"></script>
 </body>

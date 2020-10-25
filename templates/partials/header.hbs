@@ -1,6 +1,25 @@
 <header>
+ <button id="button">Dark Mode</button>
     <h1>{{title}}</h1>
     <a href="/">Weather</a>
     <a href="/about">About</a>
     <a href="/help">Help</a>
 </header>
+
+<script>
+let counter = 1;
+let btnTxt = document.getElementById('button').innerText;
+    function DarkMode() {
+       counter++;
+       if (counter % 2 == 0) {
+        document.body.style.backgroundColor = '#00bfff';
+        document.getElementById('main-content').style.color = '#3d3a3a';
+        btnTxt = 'Dark-Mode';
+       } else {
+        document.body.style.backgroundColor = '#1f1f1f';
+        document.getElementById('main-content').style.color = '#7fffd4';
+        btnTxt = 'Light-Mode';
+       }
+    }
+let btnClk = document.getElementById('button').onclick="DarkMode()"
+</script>
