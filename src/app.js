@@ -69,7 +69,6 @@ app.get('/weather', (req, res) => {
     })
 })
 
-
 app.get('/products', (req, res) => {
     if (!req.query.search) {
        return res.send({
@@ -103,3 +102,5 @@ app.get('*',(req, res) => {
 app.listen(port, () => {
     console.log('Server is up on port '+ port)    
 })
+
+
