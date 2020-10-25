@@ -32,6 +32,7 @@ app.get('/about', (req, res) => {
         title: 'About me',
         name: 'Alon Reznik'
     })
+    
 })
 
 app.get('/help', (req, res) => {
