@@ -51,12 +51,14 @@ app.get('/weather', (req, res) => {
         return res.send({
             error: 'Hey! no funny business.. enter a valid address!'
         })
-    }
-   else if (!req.query.address) {
+    } else if (input.length > 15) {
+        return res.send({
+            error: 'Whoa.. that\'s a long address.. maybe try a shorter one this time ?'
+        })
+    } else if (!req.query.address) {
         return res.send({
             error: 'You must provide an address!'
         })
-    }
 
     geoCode(req.query.address, (error, { latitude, longitude, location} = {}) => {
         if (error) {
