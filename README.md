@@ -1,2 +1,2 @@
 Go ahead and try it out!
-https://rez-weather-application.herokuapp.com/
+https://alonrez-weather-app.herokuapp.com/
