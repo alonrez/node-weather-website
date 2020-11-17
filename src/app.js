@@ -3,6 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 const geoCode = require('./utils/geoCode')
 const forecast = require('./utils/forecast')
+const Validator = require('input-validate')
 
 
 const app = express()
@@ -18,7 +19,7 @@ app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
 
-// Setup static directory tp serve
+// Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
@@ -33,7 +34,7 @@ app.get('/about', (req, res) => {
         title: 'About me',
         name: 'Alon Reznik'
     })
-    
+
 })
 
 app.get('/help', (req, res) => {
@@ -47,22 +48,27 @@ app.get('/help', (req, res) => {
 
 app.get('/weather', (req, res) => {
     let input = req.query.address;
-    // manual ssi sql and xss injections and attacks prevention.
-    if (input.includes('>')||input.includes('\"')|| input.includes('<')||input.includes('/')||input.includes('(')||input.includes('!')||input.includes('\'')) {
-        return res.send({
-            error: 'Hey! no funny business.. enter a valid address!'
-        })
-    } else if (input.length > 15) {
-        return res.send({
-            error: 'Whoa.. that\'s a long address.. maybe try a shorter one this time ?'
-        })
-    } else if (!req.query.address) {
-        return res.send({
-            error: 'You must provide an address!'
-        })
-    } 
+    if (!Validator.strictAlphabets(input)) {    // Validate the input to avoid funny business from wannabe hackers.
+        console.log('I don\'t like numbers.. is it okay if we\'ll use letters only ?')
+    }
+    else {
+        // manual ssi sql and xss injections and attacks prevention.
+        if (input.includes('>') || input.includes('\"') || input.includes('<') || input.includes('/') || input.includes('(') || input.includes('!') || input.includes('\'')) {
+            return res.send({
+                error: 'Hey! no funny business.. enter a valid address!'
+            })
+        } else if (input.length > 15) {
+            return res.send({
+                error: 'Whoa.. that\'s a long address.. maybe try a shorter one this time ?'
+            })
+        } else if (!req.query.address) {
+            return res.send({
+                error: 'You must provide an address!'
+            })
+        }
+    }
 
-    geoCode(req.query.address, (error, { latitude, longitude, location} = {}) => {
+    geoCode(req.query.address, (error, { latitude, longitude, location } = {}) => {
         if (error) {
             return res.send({ error })
 
@@ -83,11 +89,11 @@ app.get('/weather', (req, res) => {
 
 app.get('/products', (req, res) => {
     if (!req.query.search) {
-       return res.send({
+        return res.send({
             error: 'You must provide a search term!'
         })
     }
-    
+
     console.log(req.query.search)
     res.send({
         produts: []
@@ -103,7 +109,7 @@ app.get('/help/*', (req, res) => {
     })
 })
 
-app.get('*',(req, res) => {
+app.get('*', (req, res) => {
     res.render('404', {
         title: '404',
         name: 'Alon Reznik',
@@ -112,7 +118,7 @@ app.get('*',(req, res) => {
 })
 
 app.listen(port, () => {
-    console.log('Server is up on port '+ port)    
+    console.log('Server is up on port ' + port)
 })
 
 
