@@ -50,8 +50,6 @@ app.get('/weather', (req, res) => {
     let input = req.query.address;
   
         // console.log('I don\'t like numbers.. is it okay if we\'ll use letters only ?')
-    
-  
         // manual ssi sql and xss injections and attacks prevention.
         if (input.includes('>') || input.includes('\"') || input.includes('<') || input.includes('/') || input.includes('(') || input.includes('!') || input.includes('\'')) {
             return res.send({
