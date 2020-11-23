@@ -3,7 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 const geoCode = require('./utils/geoCode')
 const forecast = require('./utils/forecast')
-const Validator = require('input-validate')
+
 
 
 const app = express()
@@ -48,10 +48,10 @@ app.get('/help', (req, res) => {
 
 app.get('/weather', (req, res) => {
     let input = req.query.address;
-    if (!Validator.strictAlphabets(input)) {    // Validate the input to avoid funny business from wannabe hackers.
-        console.log('I don\'t like numbers.. is it okay if we\'ll use letters only ?')
-    }
-    else {
+  
+        // console.log('I don\'t like numbers.. is it okay if we\'ll use letters only ?')
+    
+  
         // manual ssi sql and xss injections and attacks prevention.
         if (input.includes('>') || input.includes('\"') || input.includes('<') || input.includes('/') || input.includes('(') || input.includes('!') || input.includes('\'')) {
             return res.send({
@@ -66,7 +66,7 @@ app.get('/weather', (req, res) => {
                 error: 'You must provide an address!'
             })
         }
-    }
+    
 
     geoCode(req.query.address, (error, { latitude, longitude, location } = {}) => {
         if (error) {
