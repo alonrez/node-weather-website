@@ -1,53 +1,54 @@
 <header>
- <button id="button" class="btn">Dark Mode</button>
-    <h1>{{title}}</h1>
-    <a href="/">Weather</a>
-    <a href="/about">About</a>
-    <a href="/help">Help</a>
+  <button id="button" class="btn">Dark Mode</button>
+  <h1>{{title}}</h1>
+  <a href="/">Weather</a>
+  <a href="/about">About</a>
+  <a href="/help">Help</a>
 </header>
 
 
 <script>
   /*const fs = require('fs');*/
-  
-
-  
-/*const loadSwitches = () => {
-     try{
-      const dataBuffer = fs.readFileSync('/Users/alonr/Desktop/Node-Course/web-server/src/utils/DarkModeBoolean.json')
-      const dataJSON = dataBuffer.toString()
-       return JSON.parse(dataJSON)
-        } catch (e) {
-            return []
-        }
-    }*/
 
 
 
-/* const lightSwitch = loadSwitches()
-  const Switch = lightSwitch[0]*/
- 
-let counter = 0;
-let temp;
+  /*const loadSwitches = () => {
+       try{
+        const dataBuffer = fs.readFileSync('/Users/alonr/Desktop/Node-Course/web-server/src/utils/DarkModeBoolean.json')
+        const dataJSON = dataBuffer.toString()
+         return JSON.parse(dataJSON)
+          } catch (e) {
+              return []
+          }
+      }*/
+
+
+
+  /* const lightSwitch = loadSwitches()
+    const Switch = lightSwitch[0]*/
+
+  let counter = 0;
+  let temp;
 
   //if (temp > counter) {
-   // counter = temp
- // }
-document.getElementById('button').addEventListener("click", function(x) {
-  counter++;
+  // counter = temp
+  // }
+  document.getElementById('button').addEventListener("click", function (x) {
+    counter++;
 
-       if (counter % 2 == 0) {
-        document.body.style.backgroundColor = '#00bfff';             
-        document.getElementById('main-content').style.color = '#3d3a3a';     // change to light mode
-        document.getElementById('button').innerText = 'Dark-Mode';
-       console.log(counter)
-       temp = counter;
-       } else {
-        document.body.style.backgroundColor = '#1f1f1f';            
-        document.getElementById('main-content').style.color = '#7fffd4';   // change to dark mode
-        document.getElementById('button').innerText = 'Light-Mode';
-        console.log(counter)
-        temp = counter;
-       }
-})
+    if (counter % 2 == 0) {
+      document.body.style.backgroundColor = '#00bfff';
+      document.getElementById('main-content').style.color = '#3d3a3a';     // change to light mode
+      document.getElementById('button').innerText = 'Dark-Mode';
+      console.log(counter)
+      temp = counter;
+    } else {
+      document.body.style.backgroundColor = '#363636';
+      document.getElementById('main-content').style.color = '#c651cd';   // change to dark mode
+      document.getElementById('button').innerText = 'Light-Mode';
+      document.getElementById('button').color = '8739f9';
+      console.log(counter)
+      temp = counter;
+    }
+  })
 </script>
